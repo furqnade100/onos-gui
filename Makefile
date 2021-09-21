@@ -32,7 +32,7 @@ protos: # @HELP compile the protobuf files (using protoc-go Docker)
 
 onos-gui-docker: # @HELP build onos-gui Docker image
 	docker build . -f build/onos-gui/Dockerfile \
-		-t onosproject/onos-gui:${ONOS_GUI_VERSION}
+		-t onosproject/onos-gui:0.1.0
 
 images: # @HELP build all Docker images
 images: build onos-gui-docker
@@ -40,7 +40,7 @@ images: build onos-gui-docker
 kind: # @HELP build Docker images and add them to the currently configured kind cluster
 kind: images
 	@if [ `kind get clusters` = '' ]; then echo "no kind cluster found" && exit 1; fi
-	kind load docker-image onosproject/onos-gui:${ONOS_GUI_VERSION}
+	kind load docker-image onosproject/onos-gui:0.1.0
 
 all: build images
 
